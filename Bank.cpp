@@ -50,7 +50,7 @@ public:
  
     static int getTotalAccounts() {
         Bank b;
-        ifstream fin("bd1", ios::binary);
+        ifstream fin("bankData", ios::binary);
         if (!fin) return 0;
         fin.seekg(0, ios::end);
         return fin.tellg() / sizeof(Bank);
@@ -61,7 +61,7 @@ public:
         char pass[10];
         int c = getTotalAccounts();
 
-        ofstream fout("bd1", ios::app | ios::binary);
+        ofstream fout("bankData", ios::app | ios::binary);
         if (!fout) {
             cout << "Error opening file."<<endl;
             return;
@@ -95,7 +95,7 @@ public:
     }
 
     static bool authenticate(int acno, Bank &b1) {
-        fstream file("bd1", ios::in | ios::out | ios::binary);
+        fstream file("bankData", ios::in | ios::out | ios::binary);
         if (!file) return false;
 
         file.seekg((acno - 1) * sizeof(Bank), ios::beg);
@@ -140,7 +140,7 @@ public:
     static void depositAccount() {
         Bank b1;
         int n, damt;
-        fstream file("bd1", ios::in | ios::out | ios::binary);
+        fstream file("bankData", ios::in | ios::out | ios::binary);
         int total = getTotalAccounts();
         cout << "Enter Account Number: ";
         cin >> n;
@@ -171,7 +171,7 @@ public:
     static void withdrawAccount() {
         Bank b1;
         int n, wamt;
-        fstream file("bd1", ios::in | ios::out | ios::binary);
+        fstream file("bankData", ios::in | ios::out | ios::binary);
         int total = getTotalAccounts();
         cout << "Enter Account Number: ";
         cin >> n;
@@ -215,7 +215,7 @@ public:
     static void changeStatus(char newStatus) {
         Bank b1;
         int n;
-        fstream file("bd1", ios::in | ios::out | ios::binary);
+        fstream file("bankData", ios::in | ios::out | ios::binary);
         int total = getTotalAccounts();
         cout << "Enter Account Number: ";
         cin >> n;
@@ -243,7 +243,7 @@ public:
     static void changePassword() {
         Bank b1;
         int n;
-        fstream file("bd1", ios::in | ios::out | ios::binary);
+        fstream file("bankData", ios::in | ios::out | ios::binary);
         int total = getTotalAccounts();
         cout << "Enter Account Number: ";
         cin >> n;
@@ -268,7 +268,7 @@ public:
     static void transferAmount() {
         Bank sender, receiver;
         int n1, n2, amt;
-        fstream file("bd1", ios::in | ios::out | ios::binary);
+        fstream file("bankData", ios::in | ios::out | ios::binary);
         int total = getTotalAccounts();
         cout << "Enter Sender Account Number: ";
         cin >> n1;
